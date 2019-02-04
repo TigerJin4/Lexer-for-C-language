@@ -75,6 +75,9 @@ int replace_escape_in_string(char* str) {
    function returns 0.
 */
 int is_alpha(char c) {
+  if ((c <= 'z' && c >= 'a') || (c <= 'Z' && c >= 'A')) {
+      return 1;
+  }
   /* YOUR CODE HERE */
   return 0;
 }
@@ -85,6 +88,9 @@ int is_alpha(char c) {
    (white)space character, the function returns 0.
 */
 int is_space(char c) {
+  if (c == ' ') {
+    return 1;
+  }
   /* YOUR CODE HERE */
   return 0;
 }
@@ -94,6 +100,9 @@ int is_space(char c) {
    digit according to our grammar. If it is not, the function returns 0.
 */
 int is_digit(char c) {
+  if (c <= '9' && c >= '0'){
+    return 1;
+  }
   /* YOUR CODE HERE */
   return 0;
 }
@@ -104,6 +113,9 @@ int is_digit(char c) {
    the function returns 0.
 */
 int is_identifier_component(char c) {
+  if (is_alpha(c) || is_digit(c) || c == '_') {
+    return 1;
+  }
   /* YOUR CODE HERE */
   return 0;
 }
@@ -114,8 +126,14 @@ int is_identifier_component(char c) {
    a valid identifier, the function returns 0.
 */
 int is_valid_identifier(char* str) {
+  int c = strlen(str);
+  for (int i=0; i < c; i++) {
+    if (!is_identifier_component(str[i])) {
+      return 0;
+    }
+  }
+  return 1;
   /* YOUR CODE HERE */
-  return 0;
 }
 
 /*
