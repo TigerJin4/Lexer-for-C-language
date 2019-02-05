@@ -48,6 +48,7 @@ int ProcessIncludes(char** files,
   int err = 0;
   *final_boundaries = (int*)malloc((count + 1) * sizeof(int));
   if (*final_boundaries == NULL) {
+    free(final_boundaries);
     allocation_failed();
   }
   (*final_boundaries)[0] = 0;
@@ -55,6 +56,7 @@ int ProcessIncludes(char** files,
   size_t file_count = 0;
   *final_files = (char**)malloc(file_capacity * sizeof(char*));
   if (*final_files == NULL) {
+    free(final_files);
     allocation_failed();
   }
   for (int i = 0; i < count; i++) {
