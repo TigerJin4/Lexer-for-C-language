@@ -173,6 +173,7 @@ int ProcessFileIncludes(StringDLL** node_ptr,
         allocation_failed();
       }
     }
+    free(buffer);
 
     /* Reset offset. */
     buffer_offset = 0;
