@@ -4,6 +4,12 @@
 #include <CUnit/TestDB.h>
 #include "test.h"
 
+
+char **str = calloc(3,sizeof(char*));
+str[0] = "cat";
+str[1] = "dog";
+str[2] = "mouse";
+
 /* The suite initialization function.
  * Opens the temporary file used by the tests.
  * Returns zero on success, non-zero otherwise.
@@ -119,6 +125,11 @@ void testISID_COMBINATION(void) {
   CU_ASSERT_TRUE(is_valid_identifier("_4466gr"));
 }
 
+/* STRCONCAT tests */
+void testISCON(void) {
+  printf(str_concat(str, 3));
+}
+
 /* The main() function for setting up and running the tests.
  * Returns a CUE_SUCCESS on successful running, another
  * CUnit error code on failure.
@@ -139,7 +150,7 @@ int main() {
   CU_TestInfo is_identifier_component_tests[] = {{"Test alphabet", testISCOMP_ALPHA},
                                                  {"Test digit", testISCOMP_DIGIT},
                                                  {"Test underscore", testISCOMP_UNDERSCORE},
-                                                 CU_TEST_INFO_NULL};                                
+                                                 CU_TEST_INFO_NULL};
   CU_TestInfo is_valid_identifier_tests[] = {{"Test digits", testISID_DIGIT},
                                              {"Test alphabet", testISID_ALPHA},
                                              {"Test combination", testISID_COMBINATION},
