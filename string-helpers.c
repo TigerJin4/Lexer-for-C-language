@@ -143,6 +143,19 @@ int is_valid_identifier(char* str) {
    The returned character pointer should be null terminated.
 */
 char* str_concat(char** strings, size_t count) {
+  int length = 0;
+  for (size_t i = 0; i < count; i++) {
+    length += sizeof(strings[i]);
+  }
+  char* str = (char*)malloc(length + 1);
+  int counter = 0;
+  for (size_t i = 0; i < count; i++) {
+    for (size_t j = counter; j < str_len(strings[i]); j++) {
+      str[j] = strings[i][j];
+      counter++;
+    }
+  }
+
   /* YOUR CODE HERE */
-  return NULL;
+  return str;
 }

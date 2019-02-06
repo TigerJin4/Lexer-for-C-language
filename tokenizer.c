@@ -147,7 +147,11 @@ size_t SelectToken(char* buffer,
     if (size_read + 1 == size) {
       return size_read;
     }
-    if (0) {
+    if (buffer[size_read + 1] == '/') {
+      size_read += 2;
+      while (buffer[size_read] != '\0') {
+        size_read++;
+      }
       /* YOUR CODE HERE*/
     } else {
       size_read++;
@@ -345,7 +349,10 @@ size_t SelectToken(char* buffer,
       return size_read;
     }
   } else if (buffer[size_read] == '\'') {  // characters and some errors
-
+    t = create_token(filename);
+    t->type = TOKEN_SYM_TIMES;
+    t->linenum = *linenum;
+    size_read++;
     /* YOUR CODE HERE */
 
     /* FIXME IM NOT CORRECT. */
@@ -567,4 +574,3 @@ TokenList* TokenFile(char* filename) {
   fclose(f);
   return tokens;
 }
-
