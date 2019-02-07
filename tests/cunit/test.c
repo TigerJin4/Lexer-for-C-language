@@ -168,7 +168,7 @@ int main() {
                            {"is_valid_identifier testing", init_suite1, clean_suite1,
                            is_valid_identifier_tests},
                            {"str_concat testing", init_suite1, clean_suite1,
-                           str_concat_tests}
+                           str_concat_tests},
                            CU_SUITE_INFO_NULL};
 
   /* initialize the CUnit test registry */
