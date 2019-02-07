@@ -149,7 +149,7 @@ size_t SelectToken(char* buffer,
     }
     if (buffer[size_read + 1] == '/') {
       size_read += 2;
-      while (buffer[size_read] != '\0') {
+      while (buffer[size_read] != '\n') {
         size_read++;
       }
       /* YOUR CODE HERE*/
@@ -358,7 +358,7 @@ size_t SelectToken(char* buffer,
     /* FIXME IM NOT CORRECT. */
 
     int total =
-        generate_string_error(&t, buffer, size_read, size, *linenum, filename);
+        generate_character_error(&t, buffer, size_read, size, *linenum, filename);
     if (total == 0) {
       return size_read;
     } else {
@@ -426,12 +426,18 @@ size_t SelectToken(char* buffer,
         int_len++;
       } else {
         search = 0;
+        char* endpointer;
+        int i = strtol(buffer, &endpointer, 10);
+        t = create_token(filename);
+        t->linenum = *linenum;
+        t->data.integer = i;
+        size_read += (int_len + 1);
         /* Create an int token. Hint: you may find the function strtol helpful
          */
         /* YOUR CODE HERE */
         /* FIXME IM NOT CORRECT. */
 
-        int total = generate_string_error(&t, buffer, size_read, size, *linenum,
+        int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
                                           filename);
         if (total == 0) {
           return size_read;
