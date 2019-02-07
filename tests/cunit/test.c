@@ -127,6 +127,7 @@ void testISCON(void) {
 
   char* output2 = "I Love CS61C!";
   char* input2[5] = {"I", " Love ", "CS6", "1C", "!"};
+  printf("%s\n", str_concat(input2, 5));
   CU_ASSERT_STRING_EQUAL(str_concat(input2, 5), output2);
 }
 
