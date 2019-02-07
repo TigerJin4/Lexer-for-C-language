@@ -386,6 +386,7 @@ size_t SelectToken(char* buffer,
         size_read += str_len + 1;
         t = create_token(filename);
         t->linenum = *linenum;
+	t->type = TOKEN_INTEGER;
         t->data.string =
             (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
         size_t i = 0;
@@ -425,25 +426,27 @@ size_t SelectToken(char* buffer,
       if (is_digit(buffer[size_read + int_len])) {
         int_len++;
       } else {
-        search = 0;
-        char* endpointer;
-        int i = strtol(buffer, &endpointer, 10);
-        t = create_token(filename);
-        t->linenum = *linenum;
-        t->data.integer = i;
-        size_read += (int_len + 1);
+	search = 0;
+	if (buffer[size_read] == '0' && int_len > 1){
+            int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
+                                          filename);
+            if (total == 0) {
+                return size_read;
+            } else {
+                size_read += total;
+            }
+        } else{
+       	      char* endpointer;
+       	      int i = strtol(buffer, &endpointer, 10);
+              t = create_token(filename);
+              t->linenum = *linenum;
+              t->data.integer = i;
+              size_read += int_len;
         /* Create an int token. Hint: you may find the function strtol helpful
          */
         /* YOUR CODE HERE */
         /* FIXME IM NOT CORRECT. */
-
-        int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
-                                          filename);
-        if (total == 0) {
-          return size_read;
-        } else {
-          size_read += total;
-        }
+	}
       }
     }
     if (search) {
