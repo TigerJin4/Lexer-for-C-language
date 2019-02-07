@@ -4,12 +4,6 @@
 #include <CUnit/TestDB.h>
 #include "test.h"
 
-
-char **str = calloc(3,sizeof(char*));
-str[0] = "cat";
-str[1] = "dog";
-str[2] = "mouse";
-
 /* The suite initialization function.
  * Opens the temporary file used by the tests.
  * Returns zero on success, non-zero otherwise.
