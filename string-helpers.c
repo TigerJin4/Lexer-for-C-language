@@ -150,7 +150,7 @@ char* str_concat(char** strings, size_t count) {
   char* str = (char*)malloc(length + 1);
   int counter = 0;
   for (size_t i = 0; i < count; i++) {
-    for (size_t j = counter; j < str_len(strings[i]); j++) {
+    for (size_t j = counter; j < strlen(strings[i]); j++) {
       str[j] = strings[i][j];
       counter++;
     }
