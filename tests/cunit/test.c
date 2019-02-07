@@ -127,7 +127,13 @@ void testISID_COMBINATION(void) {
 
 /* STRCONCAT tests */
 void testISCON(void) {
-  printf(str_concat(str, 3));
+  char* output1 = "Hello World";
+  char* input1[2] = {"Hello ", "World"};
+  CU_ASSERT_STRING_EQUAL(str_concat(input1,2), output1);
+
+  char* output2 = "I Love CS61C!";
+  char* input2[5] = {"I", " Love ", "CS6", "1C", "!"};
+  CU_ASSERT_STRING_EQUAL(str_concat(input2, 5), output2);
 }
 
 /* The main() function for setting up and running the tests.
