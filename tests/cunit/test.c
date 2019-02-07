@@ -155,6 +155,8 @@ int main() {
                                              {"Test alphabet", testISID_ALPHA},
                                              {"Test combination", testISID_COMBINATION},
                                              CU_TEST_INFO_NULL};
+  CU_TestInfo str_concat_tests[] = {{"test1", testISCON},
+                                             CU_TEST_INFO_NULL};
   CU_SuiteInfo suites[] = {{"is_digit testing", init_suite1, clean_suite1,
                            isdigit_tests},
                            {"is_alpha testing", init_suite1, clean_suite1,
@@ -165,6 +167,8 @@ int main() {
                            is_identifier_component_tests},
                            {"is_valid_identifier testing", init_suite1, clean_suite1,
                            is_valid_identifier_tests},
+                           {"str_concat testing", init_suite1, clean_suite1,
+                           str_concat_tests}
                            CU_SUITE_INFO_NULL};
 
   /* initialize the CUnit test registry */
