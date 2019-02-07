@@ -157,5 +157,6 @@ char* str_concat(char** strings, size_t count) {
   }
 
   /* YOUR CODE HERE */
+  printf("%s", str);
   return str;
 }
