@@ -428,6 +428,7 @@ size_t SelectToken(char* buffer,
         search = 0;
         char* endpointer;
         int i = strtol(buffer, &endpointer, 10);
+        printf("%d\n", i);
         t = create_token(filename);
         t->linenum = *linenum;
         t->data.integer = i;
@@ -437,7 +438,6 @@ size_t SelectToken(char* buffer,
          */
         /* YOUR CODE HERE */
         /* FIXME IM NOT CORRECT. */
-
         int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
                                           filename);
         if (total == 0) {
