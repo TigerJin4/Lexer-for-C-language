@@ -374,7 +374,6 @@ size_t SelectToken(char* buffer,
     }
 
   } else if (buffer[size_read] == '"') {  // strings and some errors
-    printf("%s\n", "hi1");
     size_t str_len = 1;
     int search = 1;
     while (size_read + str_len < size && search) {
