@@ -433,10 +433,11 @@ size_t SelectToken(char* buffer,
         char* endpointer;
         int i = strtol(buffer, &endpointer, 10);
         printf("%d\n", i);
+        size_read += int_len + 1;
         t = create_token(filename);
         t->linenum = *linenum;
         t->data.integer = i;
-        size_read += int_len + 1;
+        
         t->type = TOKEN_INTEGER;
         /* Create an int token. Hint: you may find the function strtol helpful
          */
