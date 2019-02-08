@@ -440,12 +440,9 @@ size_t SelectToken(char* buffer,
         // printf("%d\n", i);
         size_read += int_len;
         t = create_token(filename);
-
         t->linenum = *linenum;
         t->type = TOKEN_INTEGER;
-
         t->data.integer = i;
-        printf("%d\n", t->data.integer);
 
         /* Create an int token. Hint: you may find the function strtol helpful
          */
@@ -482,8 +479,27 @@ size_t SelectToken(char* buffer,
           t->linenum = *linenum;
           t->type = type;
           size_read += id_len;
-        } else if (0) {  // FIX ME
+        } else if (is_valid_identifier(token_contents)) {  // FIX ME
+          t = create_token(filename);
+          t->linenum = *linenum;
+          t->type = type;
+          t->data.identifier =
+              (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
+          size_read += id_len;
           /* Handle identifiers */
+          size_t i = 0;
+          size_t j = 0;
+          while (i < strlen(token_contents)) {
+            int escaped = replace_escape_in_string(token_contents + i);
+            if (escaped == -1) {
+              t->data.string[j++] = token_contents[i++];
+            } else {
+              t->data.string[j++] = escaped;
+              i += 2;
+            }
+            t->data.string[j] = '\0';
+          }
+          t->type = TOKEN_STRING;
           /* YOUR CODE HERE */
         } else {
           /* Errors */
