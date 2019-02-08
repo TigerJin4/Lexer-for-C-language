@@ -535,7 +535,7 @@ size_t SelectToken(char* buffer,
               (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
           size_read += id_len;
           /* Handle identifiers */
-
+          int i = 0;
           while (i < strlen(token_contents)) {
        		t->data.identifier[i] = token_contents[i];
       		i++;
