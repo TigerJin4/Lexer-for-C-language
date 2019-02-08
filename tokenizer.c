@@ -382,6 +382,7 @@ size_t SelectToken(char* buffer,
     t = create_token(filename);
     t->linenum = *linenum;
     t->type = TOKEN_CHARACTER;
+    printf("%s\n", buffer);
     t->data.character = replace_escape_in_character(buffer);
     size_read += 3;
 
