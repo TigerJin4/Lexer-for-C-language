@@ -349,15 +349,15 @@ size_t SelectToken(char* buffer,
       return size_read;
     }
   } else if (buffer[size_read] == '\'') {  // characters and some errors
-    if (isprint(buffer[size_read + 1])){
-
-    }
-    t = create_token(filename);
-    t->type = TOKEN_SYM_TIMES;
-    t->linenum = *linenum;
-    size_read++;
-    t->data.character = buffer[size_read];
-        (char)malloc(sizeof(char) + 1);
+    // if (isprint(buffer[size_read + 1])){
+    //
+    // }
+    // t = create_token(filename);
+    // t->type = TOKEN_SYM_TIMES;
+    // t->linenum = *linenum;
+    // size_read++;
+    // t->data.character = buffer[size_read];
+    //     (char)malloc(sizeof(char) + 1);
     /* YOUR CODE HERE */
 
     /* FIXME IM NOT CORRECT. */
@@ -451,13 +451,13 @@ size_t SelectToken(char* buffer,
          */
         /* YOUR CODE HERE */
         /* FIXME IM NOT CORRECT. */
-        int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
-                                          filename);
-        if (total == 0) {
-          return size_read;
-        } else {
-          size_read += total;
-        }
+        //int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
+        //                                  filename);
+        // if (total == 0) {
+        //   return size_read;
+        // } else {
+        //   size_read += total;
+        // }
       }
     }
     if (search) {
