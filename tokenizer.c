@@ -530,24 +530,29 @@ size_t SelectToken(char* buffer,
         } else if (is_valid_identifier(token_contents)) {  // FIX ME
           t = create_token(filename);
           t->linenum = *linenum;
-          t->type = type;
+          t->type = TOKEN_IDENTIFIER;
           t->data.identifier =
               (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
           size_read += id_len;
           /* Handle identifiers */
-          size_t i = 0;
-          size_t j = 0;
+
           while (i < strlen(token_contents)) {
-            int escaped = replace_escape_in_string(token_contents + i);
-            if (escaped == -1) {
-              t->data.string[j++] = token_contents[i++];
-            } else {
-              t->data.string[j++] = escaped;
-              i += 2;
-            }
-            t->data.string[j] = '\0';
-          }
-          t->type = TOKEN_IDENTIFIER;
+       		t->data.identifier[i] = token_contents[i];
+      		i++;
+      	  }
+          // size_t i = 0;
+          // size_t j = 0;
+          // while (i < strlen(token_contents)) {
+          //   int escaped = replace_escape_in_string(token_contents + i);
+          //   if (escaped == -1) {
+          //     t->data.string[j++] = token_contents[i++];
+          //   } else {
+          //     t->data.string[j++] = escaped;
+          //     i += 2;
+          //   }
+          //   t->data.string[j] = '\0';
+          // }
+          // t->type = TOKEN_IDENTIFIER;
           /* YOUR CODE HERE */
         } else {
           /* Errors */
