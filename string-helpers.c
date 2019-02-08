@@ -152,7 +152,7 @@ char* str_concat(char** strings, size_t count) {
   for (int i = 0; i < count; i++) {
     char* word = strings[i];
     for (int j = 0; j < strlen(strings[i]); j++) {
-      str[counter] = *strings[j];
+      str[counter] = word[j];
       counter++;
     }
   }
