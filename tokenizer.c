@@ -88,6 +88,17 @@ size_t SelectToken(char* buffer,
   char token_contents[size + 1];
   size_t size_read = 0;
 
+  if (IS_COMMENT == 1) {
+    while (buffer[size_read] != '\n') {
+      size_read++;
+    }
+    size_read++;
+    (*linenum)++;
+    IS_COMMENT = 0;
+    return size_read;
+  }
+
+
   /* First remove any leading whitespace. */
   while (size_read < size && (is_space(buffer[size_read]))) {
     if (buffer[size_read] == '\n') {
@@ -108,15 +119,7 @@ size_t SelectToken(char* buffer,
   TokenList* node = NULL;
   Token* t = NULL;
 
-  if (IS_COMMENT == 1) {
-    while (buffer[size_read] != '\n') {
-      size_read++;
-	  }
-    size_read++;
-    (*linenum)++;
-    IS_COMMENT = 0;
-    return size_read;
-  }
+
 
   /* Should now be able to narrow tokens by first character. */
   if (buffer[size_read] == '+') {  // + and ++
