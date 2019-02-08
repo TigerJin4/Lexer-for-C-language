@@ -434,7 +434,7 @@ size_t SelectToken(char* buffer,
       if (is_digit(buffer[size_read + int_len])) {
         int_len++;
       } else {
-        if (buffer[size_read] != 0 || (buffer[size_read] == 0 && int_len == 1)){
+        if (buffer[size_read] != '0' || (buffer[size_read] == '0' && int_len == '1')){
         search = 0;
         char* endpointer;
         int i = strtol(buffer, &endpointer, 10);
