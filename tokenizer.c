@@ -499,7 +499,7 @@ size_t SelectToken(char* buffer,
             }
             t->data.string[j] = '\0';
           }
-          t->type = TOKEN_STRING;
+          t->type = TOKEN_IDENTIFIER;
           /* YOUR CODE HERE */
         } else {
           /* Errors */
