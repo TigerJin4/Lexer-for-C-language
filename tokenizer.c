@@ -357,7 +357,6 @@ size_t SelectToken(char* buffer,
     // t->linenum = *linenum;
     // size_read++;
     // t->data.character = buffer[size_read];
-    //     (char)malloc(sizeof(char) + 1);
     /* YOUR CODE HERE */
 
     /* FIXME IM NOT CORRECT. */
@@ -365,12 +364,14 @@ size_t SelectToken(char* buffer,
     if (size_read + 1 >= size) {
       return size_read;
     }
-    int total =
-        generate_character_error(&t, buffer, size_read, size, *linenum, filename);
-    if (total == 0) {
-      return size_read;
-    } else {
-      size_read += total;
+    else {
+      int total =
+          generate_character_error(&t, buffer, size_read, size, *linenum, filename);
+      if (total == 0) {
+          return size_read;
+      } else {
+          size_read += total;
+      }
     }
 
   } else if (buffer[size_read] == '"') {  // strings and some errors
@@ -433,6 +434,7 @@ size_t SelectToken(char* buffer,
       if (is_digit(buffer[size_read + int_len])) {
         int_len++;
       } else {
+        if (buffer[size_read] != 0 || (buffer[size_read] == 0 && int_len == 1)){
         search = 0;
         char* endpointer;
         int i = strtol(buffer, &endpointer, 10);
@@ -442,18 +444,20 @@ size_t SelectToken(char* buffer,
         t->linenum = *linenum;
         t->type = TOKEN_INTEGER;
         t->data.integer = i;
-
+        }
         /* Create an int token. Hint: you may find the function strtol helpful
          */
         /* YOUR CODE HERE */
         /* FIXME IM NOT CORRECT. */
-        //int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
-        //                                  filename);
-        // if (total == 0) {
-        //   return size_read;
-        // } else {
-        //   size_read += total;
-        // }
+        else {
+        int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
+                                         filename);
+        if (total == 0) {
+          return size_read;
+        } else {
+          size_read += total;
+        }
+      }
       }
     }
     if (search) {
