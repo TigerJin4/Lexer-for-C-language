@@ -434,6 +434,7 @@ size_t SelectToken(char* buffer,
       if (is_digit(buffer[size_read + int_len])) {
         int_len++;
       } else {
+        search = 0;
         if (buffer[size_read] == '0' && int_len > 1) {
         int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
                                          filename);
@@ -444,7 +445,7 @@ size_t SelectToken(char* buffer,
         }
       }
         else{
-        search = 0;
+
         char* endpointer;
         int i = strtol(buffer, &endpointer, 10);
         // printf("%d\n", i);
