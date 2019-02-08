@@ -442,9 +442,10 @@ size_t SelectToken(char* buffer,
         t = create_token(filename);
 
         t->linenum = *linenum;
+        t->type = TOKEN_INTEGER;
+        
         t->data.integer = i;
 
-        t->type = TOKEN_INTEGER;
         /* Create an int token. Hint: you may find the function strtol helpful
          */
         /* YOUR CODE HERE */
