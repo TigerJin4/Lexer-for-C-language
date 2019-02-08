@@ -147,14 +147,16 @@ char* str_concat(char** strings, size_t count) {
   for (size_t i = 0; i < count; i++) {
     length += strlen(strings[i]);
   }
-  char* str = (char*)malloc(length + 1);
+  char* str = (char*)malloc(sizeof(char)*length + 1);
   int counter = 0;
-  for (size_t i = 0; i < count; i++) {
-    for (size_t j = counter; j < strlen(strings[i])+counter; j++) {
-      str[j] = strings[i][j];
+  for (int i = 0; i < count; i++) {
+    char* word = string[i];
+    for (int j = 0; j < strlen(strings[i]); j++) {
+      str[counter] = strings[j];
       counter++;
     }
   }
+  str[counter++] = '\0';
 
   /* YOUR CODE HERE */
   return str;
