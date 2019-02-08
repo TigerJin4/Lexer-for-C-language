@@ -81,7 +81,6 @@ void testISSPACE_ALPHA(void) {
 void testISSPACE_DIGIT(void) {
   CU_ASSERT_FALSE(is_space('1'));
   CU_ASSERT_FALSE(is_space('2'));
-  CU_ASSERT_FALSE(is_space('\n'));
 }
 void testISSPACE_SPACE(void) {
   CU_ASSERT_TRUE(is_space(' '));

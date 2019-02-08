@@ -162,16 +162,6 @@ size_t SelectToken(char* buffer,
     }
     //size_read += 1;
     if (buffer[size_read + 1] == '/') {
-      // IS_COMMENT = 1;
-      // size_read += 1;
-      // *linenum += 1;
-      // while (IS_COMMENT && size_read < size -1) {
-      //   if (buffer[size_read] == '\n'){
-      //     IS_COMMENT = 0;
-      //   } else {
-      //     size_read +=1;
-      //   }
-      // }
       size_read += 2;
       IS_COMMENT = 1;
       while (buffer[size_read] != '\n') {
@@ -377,35 +367,25 @@ size_t SelectToken(char* buffer,
       return size_read;
     }
   } else if (buffer[size_read] == '\'') {  // characters and some errors
-    // if (isprint(buffer[size_read + 1])){
-    //
-    // }
-    // t = create_token(filename);
-    // t->type = TOKEN_SYM_TIMES;
-    // t->linenum = *linenum;
-    // size_read++;
-    // t->data.character = buffer[size_read];
-    /* YOUR CODE HERE */
-
     /* FIXME IM NOT CORRECT. */
 
     if (buffer[size_read + 2] == '\'') {
  	   size_read++;
- 	   if (isprint(buffer[size_read]) ||
- 	      buffer[size_read] == '\\' ||
- 	      buffer[size_read] == '\0' ||
- 	      buffer[size_read] == '\t' ||
- 	      buffer[size_read] == '\n' ||
- 	      buffer[size_read] == '\'' ||
- 	      buffer[size_read] == '\r'	||
- 	      buffer[size_read] == ' ') {
+ 	   if (isprint(buffer[size_read])) {
  	    t = create_token(filename);
       t->linenum = *linenum;
    	  t->type = TOKEN_CHARACTER;
  	    t->data.character = buffer[size_read];
  	    size_read += 2;
  	    }
- 	}
+ 	} else if (buffer[size_read + 3] == '\'' && buffer[size_read + 1] == '\\'){
+    t = create_token(filename);
+    t->linenum = *linenum;
+    t->type = TOKEN_CHARACTER;
+    t->data.character = replace_escape_in_character(buffer);
+    size_read += 3;
+
+  }
     else {
       int total =
           generate_character_error(&t, buffer, size_read, size, *linenum, filename);
