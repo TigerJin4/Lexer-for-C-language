@@ -365,9 +365,9 @@ size_t SelectToken(char* buffer,
  	   size_read++;
  	   if (isprint(buffer[size_read]) ||
  	      buffer[size_read] == '\\' ||
- 	      buffer[size_read] == '\n' ||
- 	      buffer[size_read] == '\t' ||
  	      buffer[size_read] == '\0' ||
+ 	      buffer[size_read] == '\t' ||
+ 	      buffer[size_read] == '\n' ||
  	      buffer[size_read] == '\'' ||
  	      buffer[size_read] == '\r'	||
  	      buffer[size_read] == ' ') {
