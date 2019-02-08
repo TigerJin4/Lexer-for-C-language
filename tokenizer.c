@@ -363,7 +363,7 @@ size_t SelectToken(char* buffer,
     /* FIXME IM NOT CORRECT. */
 
     if (size_read + 1 >= size) {
-      return size_read
+      return size_read;
     }
     int total =
         generate_character_error(&t, buffer, size_read, size, *linenum, filename);
