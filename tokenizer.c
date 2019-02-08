@@ -349,14 +349,22 @@ size_t SelectToken(char* buffer,
       return size_read;
     }
   } else if (buffer[size_read] == '\'') {  // characters and some errors
+    if (isprint(buffer[size_read + 1])){
+
+    }
     t = create_token(filename);
     t->type = TOKEN_SYM_TIMES;
     t->linenum = *linenum;
     size_read++;
+    t->data.character = buffer[size_read];
+        (char)malloc(sizeof(char) + 1);
     /* YOUR CODE HERE */
 
     /* FIXME IM NOT CORRECT. */
 
+    if (size_read + 1 >= size) {
+      return size_read
+    }
     int total =
         generate_character_error(&t, buffer, size_read, size, *linenum, filename);
     if (total == 0) {
@@ -420,10 +428,8 @@ size_t SelectToken(char* buffer,
     }
   } else if (is_digit(
                  buffer[size_read])) {  // positive integers and some errors
-    printf("%s\n", "hi1");
     size_t int_len = 1;
     int search = 1;
-    printf("%s\n", "hi1");
     while (size_read + int_len < size && search) {
       printf("%s\n", "hi2");
       if (is_digit(buffer[size_read + int_len])) {
@@ -433,11 +439,12 @@ size_t SelectToken(char* buffer,
         char* endpointer;
         int i = strtol(buffer, &endpointer, 10);
         printf("%d\n", i);
-        size_read += int_len + 1;
+        size_read += int_len;
         t = create_token(filename);
+
         t->linenum = *linenum;
         t->data.integer = i;
-        
+
         t->type = TOKEN_INTEGER;
         /* Create an int token. Hint: you may find the function strtol helpful
          */
