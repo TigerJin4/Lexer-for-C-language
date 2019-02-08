@@ -156,7 +156,8 @@ char* str_concat(char** strings, size_t count) {
       counter++;
     }
   }
-  str[counter++] = '\0';
+  counter++
+  str[counter] = '\0';
 
   /* YOUR CODE HERE */
   return str;
