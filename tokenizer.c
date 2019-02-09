@@ -368,6 +368,9 @@ size_t SelectToken(char* buffer,
     }
   } else if (buffer[size_read] == '\'') {  // characters and some errors
     /* FIXME IM NOT CORRECT. */
+    if (size_read + 2 > size){
+      return size_read;
+    }
     if (buffer[size_read + 2] == '\'') {
  	   size_read++;
  	   if (isprint(buffer[size_read])) {
@@ -377,12 +380,14 @@ size_t SelectToken(char* buffer,
  	    t->data.character = buffer[size_read];
  	    size_read += 3;
  	    }
- 	} else if (buffer[size_read + 3] == '\'' && buffer[size_read + 1] == '\\'){
-    t = create_token(filename);
-    t->linenum = *linenum;
-    t->type = TOKEN_CHARACTER;
-    t->data.character = replace_escape_in_character(buffer + size_read + 1);
-    size_read += 4;
+ 	} if (size_read + 3 > size) {
+      return size_read;
+  } else if (buffer[size_read + 3] == '\'' && buffer[size_read + 1] == '\\'){
+        t = create_token(filename);
+        t->linenum = *linenum;
+        t->type = TOKEN_CHARACTER;
+        t->data.character = replace_escape_in_character(buffer + size_read + 1);
+        size_read += 4;
 
   }
     else {
