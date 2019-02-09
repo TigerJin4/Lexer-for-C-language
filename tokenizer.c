@@ -367,25 +367,24 @@ size_t SelectToken(char* buffer,
     /* FIXME IM NOT CORRECT. */
     if (size_read + 2 > size){
       return size_read;
-    }
-    if (buffer[size_read + 2] == '\'') {
- 	   size_read++;
- 	   if (isprint(buffer[size_read])) {
- 	    t = create_token(filename);
-      t->linenum = *linenum;
-   	  t->type = TOKEN_CHARACTER;
- 	    t->data.character = buffer[size_read];
- 	    size_read += 3;
+    } if (buffer[size_read + 2] == '\'') {
+ 	        size_read++;
+ 	        if (isprint(buffer[size_read])) {
+ 	            t = create_token(filename);
+              t->linenum = *linenum;
+   	          t->type = TOKEN_CHARACTER;
+ 	            t->data.character = buffer[size_read];
+ 	            size_read += 3;
+ 	        }
  	   } else if (size_read + 3 > size) {
-          return size_read;
-    } else if (buffer[size_read + 3] == '\'' && buffer[size_read + 1] == '\\'){
+            return size_read;
+     } if (buffer[size_read + 3] == '\'' && buffer[size_read + 1] == '\\'){
         t = create_token(filename);
         t->linenum = *linenum;
         t->type = TOKEN_CHARACTER;
         t->data.character = replace_escape_in_character(buffer + size_read + 1);
         size_read += 4;
-
-  }
+      }
     else {
       int total =
           generate_character_error(&t, buffer, size_read, size, *linenum, filename);
@@ -395,7 +394,6 @@ size_t SelectToken(char* buffer,
           size_read += total;
       }
     }
-  }
 
   } else if (buffer[size_read] == '"') {  // strings and some errors
     size_t str_len = 1;
