@@ -407,23 +407,22 @@ size_t SelectToken(char* buffer,
     //                 size_read += total;
     //             }
     //         }
-    if (size_read + 1 == size || size_read + 2 == size) {
- 	    return size_read;
- 	 }
- 	 char *ptr = &(buffer[size_read+1]);
- 	 if (replace_escape_in_character(ptr) == -1 && isprint(ptr[0])  && buffer[size_read + 2] == '\'') {
+    if (size_read + 2 <= size) {
+      return size_read;
+    }
+ 	 if (replace_escape_in_character(buffer + size_read + 1) == -1 && isprint(buffer[size_read])  && buffer[size_read + 2] == '\'') {
  	   size_read++;
  	   t = create_token(filename);
             t->linenum = *linenum;
   	   t->type = TOKEN_CHARACTER;
  	   t->data.character = buffer[size_read];
  	   size_read += 2;
- 	 } else if (replace_escape_in_character(ptr) != -1 && size_read + 3 < size && buffer[size_read + 3] == '\'') {
+ 	 } else if (replace_escape_in_character(buffer + size_read + 1) != -1 && size_read + 3 < size && buffer[size_read + 3] == '\'') {
  	   size_read++;
  	   t = create_token(filename);
             t->linenum = *linenum;
   	   t->type = TOKEN_CHARACTER;
- 	   t->data.character = replace_escape_in_character(ptr);
+ 	   t->data.character = replace_escape_in_character(buffer + size_read + 1);
  	   size_read += 3;
      } else {
           int total =
@@ -434,6 +433,10 @@ size_t SelectToken(char* buffer,
               size_read += total;
           }
     }
+//my code 
+//my code end
+
+
 
   } else if (buffer[size_read] == '"') {  // strings and some errors
     size_t str_len = 1;
