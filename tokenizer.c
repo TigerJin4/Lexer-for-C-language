@@ -407,7 +407,7 @@ size_t SelectToken(char* buffer,
     //                 size_read += total;
     //             }
     //         }
-    if (size_read + 2 <= size) {
+    if (size_read + 2 == size || size_read + 1 == size) {
       return size_read;
     }
  	  char *ptr = &(buffer[size_read+1]);
