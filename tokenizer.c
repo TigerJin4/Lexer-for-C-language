@@ -378,7 +378,7 @@ size_t SelectToken(char* buffer,
     }
   } else if (buffer[size_read] == '\'') {  // characters and some errors
     /* FIXME IM NOT CORRECT. */
-    if (size_read + 1 == size || size_read + 2 == size){
+    if (size_read + 2 > size){
       return size_read;
     } if (buffer[size_read + 2] == '\'') {
  	        size_read++;
@@ -387,7 +387,7 @@ size_t SelectToken(char* buffer,
               t->linenum = *linenum;
    	          t->type = TOKEN_CHARACTER;
  	            t->data.character = buffer[size_read];
- 	            size_read += 3;
+ 	            size_read += 2;
  	        }
  	   } else if (size_read + 3 > size) {
             return size_read;
@@ -397,7 +397,7 @@ size_t SelectToken(char* buffer,
                 t->linenum = *linenum;
                 t->type = TOKEN_CHARACTER;
                 t->data.character = replace_escape_in_character(buffer + size_read + 1);
-                size_read += 4;
+                size_read += 3;
             } else {
                 int total =
                     generate_character_error(&t, buffer, size_read, size, *linenum, filename);
@@ -411,18 +411,18 @@ size_t SelectToken(char* buffer,
  	 //    return size_read;
  	 // }
  	 // char *ptr = &(buffer[size_read+1]);
- 	 // if (replace_escape_in_character(ptr) == -1 && isprint(ptr[0])  && buffer[size_read + 2] == '\'') {
+ 	 // if (replace_escape_in_character(buffer + size_read + 1) == -1 && isprint(buffer[size_read]))  && buffer[size_read + 2] == '\'') {
  	 //   size_read++;
  	 //   t = create_token(filename);
-   //          t->linenum = *linenum;
-  	//    t->type = TOKEN_CHARACTER;
+   //   t->linenum = *linenum;
+  	//  t->type = TOKEN_CHARACTER;
  	 //   t->data.character = buffer[size_read];
  	 //   size_read += 2;
  	 // } else if (replace_escape_in_character(ptr) != -1 && size_read + 3 < size && buffer[size_read + 3] == '\'') {
  	 //   size_read++;
  	 //   t = create_token(filename);
-   //          t->linenum = *linenum;
-  	//    t->type = TOKEN_CHARACTER;
+   //   t->linenum = *linenum;
+  	//  t->type = TOKEN_CHARACTER;
  	 //   t->data.character = replace_escape_in_character(ptr);
  	 //   size_read += 3;
      } else {
