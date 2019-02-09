@@ -1,0 +1,80 @@
+"Comments Test Section"
+// This is a Comment.
+// This is a extremely LONG COMMENT: adflkjahsldgjhldghjqdfqjfd;ljkdfl;hadfjhakjhdlakfjhdlajkfhdlkjahflskjdhalkfdjhaldjkfalhsfdhasfkhadkfjhskhdjashguahdfhajsdkfjashkdfjhaskfjhdkashfkajshdfkjsahfkjdahkfdjhsakfhdkahfskjfdkasjhfdjsafkhsadjfaks
+"Expression after Comment"
+int my_age = 21;
+
+// This is another Comment.
+
+61
+
+//This Comment is really CLOSE.
+
+Test_If_There_Is_Anything_Left
+
+// Break Section
+'\n'
+
+"Characters Test Section"
+Correct_Character
+'a' ' '
+
+Illegal_Character
+'abcd'
+
+Test_Escaped_Character
+'\n' '\t' '\0' '\\'
+
+Test_single_quote // '\''
+'\''
+
+Test_single_backslash // '\'
+'\'
+
+// Test For Error
+"Test for error case"
+'aa' 'a'
+'a  'a'
+'
+
+// Break Section
+'\n'
+
+"Identifiers Test Section"
+A_complex_Identifier_61C
+
+"Number and Identifier"
+666abcd
+
+A_Error_Test_Case= 07xyz
+
+"First Part Corret, Second Part Error"
+InCorrect@Identifier
+
+"Strange Combined Identifier"
+!Sigh>
+
+"Some Regular Expression"
+int i = 123a;
+int j = 123+;
+
+// Break Section
+'\n'
+
+"Integers Test Section"
+12345
+
+Should_Error
+09876
+
+Should_not_Error
+0
+
+"Test Error then not Error"
+0123    123
+
+"Largest Number"
+2147483647
+
+"Overflow"
+2147483648
