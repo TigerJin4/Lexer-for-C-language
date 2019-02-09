@@ -376,10 +376,9 @@ size_t SelectToken(char* buffer,
    	  t->type = TOKEN_CHARACTER;
  	    t->data.character = buffer[size_read];
  	    size_read += 3;
- 	    }
- 	} if (size_read + 3 > size) {
-      return size_read;
-  } else if (buffer[size_read + 3] == '\'' && buffer[size_read + 1] == '\\'){
+ 	   } else if (size_read + 3 > size) {
+          return size_read;
+    } else if (buffer[size_read + 3] == '\'' && buffer[size_read + 1] == '\\'){
         t = create_token(filename);
         t->linenum = *linenum;
         t->type = TOKEN_CHARACTER;
@@ -396,6 +395,7 @@ size_t SelectToken(char* buffer,
           size_read += total;
       }
     }
+  }
 
   } else if (buffer[size_read] == '"') {  // strings and some errors
     size_t str_len = 1;

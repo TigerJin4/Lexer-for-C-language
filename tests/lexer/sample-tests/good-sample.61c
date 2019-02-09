@@ -9,3 +9,4 @@ char my_char2 = '\t';
 char my_char3 = ';
 
 ''//a'';
+'a
