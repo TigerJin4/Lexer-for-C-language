@@ -450,8 +450,8 @@ size_t SelectToken(char* buffer,
                  buffer[size_read])) {  // positive integers and some errors
     size_t int_len = 1;
     int search = 1;
-    printf("%d\n", buffer[size_read - 1]);
-    printf("%d\n", buffer[size_read]);
+    printf("%ld\n", buffer[size_read - 1]);
+    printf("%ld\n", buffer[size_read]);
     while (size_read + int_len < size && search) {
       if (is_digit(buffer[size_read + int_len])) {
         int_len++;
@@ -468,7 +468,7 @@ size_t SelectToken(char* buffer,
         } else {
               char* endpointer;
               long i = strtol(buffer, &endpointer, 10);
-              printf("%d\n", i);
+              printf("%ld\n", i);
               size_read += int_len;
               t = create_token(filename);
               t->linenum = *linenum;
