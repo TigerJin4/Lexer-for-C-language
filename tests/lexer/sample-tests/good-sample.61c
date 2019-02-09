@@ -5,7 +5,7 @@ int my_age = 666666666666666666666666666666;         //comment
 char my_char1 = 'a';
 'c
 char my_char2 = '\t';
-char my_char2 = '\t';
+char my_char2 = '\n';
 char my_char3 = ';
 
 ''//a'';
