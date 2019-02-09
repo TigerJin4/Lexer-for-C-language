@@ -88,14 +88,16 @@ size_t SelectToken(char* buffer,
   char token_contents[size + 1];
   size_t size_read = 0;
 
-  if (IS_COMMENT == 1) {
-    while (buffer[size_read] != '\n') {
-      size_read++;
+  if (IS_COMMENT) {
+    while (size_read < size) {
+        if (buffer[size_read] == '\n') {
+          IS_COMMENT = 0;
+          size_read++;
+          (*linenum)++;
+          break;
+        }
+        size_read++;
     }
-    size_read++;
-    (*linenum)++;
-    IS_COMMENT = 0;
-    return size_read;
   }
 
 
