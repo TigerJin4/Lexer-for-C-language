@@ -1,4 +1,4 @@
-int my_age = 6; //comment
+int my_age = 06; //comment
 //this is a comment
 //this is another comment
 char my_char1 = 'a';
@@ -6,3 +6,6 @@ char my_char1 = 'a';
 char my_char2 = '\t';
 char my_char2 = '\t';
 char my_char3 = ';
+
+''//a'';
+
