@@ -410,7 +410,7 @@ size_t SelectToken(char* buffer,
     if (size_read + 2 <= size) {
       return size_read;
     }
- 	  char *charc = &(buffer[size_read+1]);
+ 	  char *ptr = &(buffer[size_read+1]);
  	 if (replace_escape_in_character(ptr) == -1 && isprint(ptr[0])  && buffer[size_read + 2] == '\'') {
  	   size_read++;
  	   t = create_token(filename);
