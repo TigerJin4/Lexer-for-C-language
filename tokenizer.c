@@ -450,14 +450,12 @@ size_t SelectToken(char* buffer,
                  buffer[size_read])) {  // positive integers and some errors
     size_t int_len = 1;
     int search = 1;
-    printf("%s\n", "hi");
     while (size_read + int_len < size && search) {
       if (is_digit(buffer[size_read + int_len])) {
         int_len++;
       } else {
         search = 0;
         if (buffer[size_read] == '0' && int_len > 1) {
-          printf("%s\n", "hi");
             int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
                                          filename);
             if (total == 0) {
@@ -488,7 +486,6 @@ size_t SelectToken(char* buffer,
   } else {  // Identifiers, keywords, and errors
     size_t id_len = 1;
     int search = 1;
-    printf("%s\n", "hi");
     while (size_read + id_len < size && search) {
       if (is_identifier_component(buffer[size_read + id_len])) {
         id_len++;
