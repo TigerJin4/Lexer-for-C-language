@@ -1,4 +1,4 @@
-int my_age = 06;
+int my_age = 06; //this is a comment
 //this is a comment
 //this is another comment
 char my_char1 = 'a';
