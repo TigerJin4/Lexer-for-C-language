@@ -175,7 +175,7 @@ size_t SelectToken(char* buffer,
       IS_COMMENT = 1;
       (*linenum)++;
       size_read+=2;
-      if (size_read > size) {
+      if (size_read == size) {
         return size_read;
       }
       while (IS_COMMENT && size_read < size) {
