@@ -165,8 +165,8 @@ size_t SelectToken(char* buffer,
     //size_read += 1;
     if (buffer[size_read + 1] == '/') {
       IS_COMMENT = 1;
-      size_read++;
-      return size_read;
+      //size_read++;
+      return size_read + 1;
       /* YOUR CODE HERE*/
     } else {
       size_read++;
