@@ -99,14 +99,14 @@ size_t SelectToken(char* buffer,
   //       size_read++;
   //   }
   // }
-  while (size_read < size && (is_space(buffer[size_read]))) {
-    if (buffer[size_read] == '\n') {
-      (*linenum)++;
-    }
-    size_read++;
-  }
-
-
+  while (IS_COMMENT && size_read < size) {
+	  if (buffer[size_read] == '\n') {
+	    IS_COMMENT = 0;
+	    return size_read;
+          } else {
+	    size_read++;
+ 	  }
+	}
 
   /* First remove any leading whitespace. */
   while (size_read < size && (is_space(buffer[size_read]))) {
@@ -171,15 +171,15 @@ size_t SelectToken(char* buffer,
     }
     //size_read += 1;
     if (buffer[size_read + 1] == '/') {
-      IS_COMMENT = 1;
-    	(*linenum)++;
+      (*linenum)++;
     	size_read += 2;
+      IS_COMMENT = 1;
     	while (IS_COMMENT == 1 && size_read < size) {
-    	  if (buffer[size_read] == '\n') {
-    	    IS_COMMENT = 0;
-              } else {
-    	    size_read++;
-     	  }
+    	    if (buffer[size_read] == '\n') {
+    	         IS_COMMENT = 0;
+          } else {
+    	         size_read++;
+     	    }
     	}
     	return size_read;
       // IS_COMMENT = 1;
