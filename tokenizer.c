@@ -457,25 +457,23 @@ size_t SelectToken(char* buffer,
       } else {
         search = 0;
         if (buffer[size_read] == '0' && int_len > 1) {
-        int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
+            int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
                                          filename);
-        if (total == 0) {
-          return size_read;
+            if (total == 0) {
+                return size_read;
+            } else {
+                size_read += total;
+            }
         } else {
-          size_read += total;
-        }
-      }
-        else{
-
-        char* endpointer;
-        int i = strtol(buffer, &endpointer, 10);
+              char* endpointer;
+              int i = strtol(buffer, &endpointer, 10);
         // printf("%d\n", i);
-        size_read += int_len;
-        t = create_token(filename);
-        t->linenum = *linenum;
-        t->type = TOKEN_INTEGER;
-        t->data.integer = i;
-        }
+              size_read += int_len;
+              t = create_token(filename);
+              t->linenum = *linenum;
+              t->type = TOKEN_INTEGER;
+              t->data.integer = i;
+          }
         /* Create an int token. Hint: you may find the function strtol helpful
          */
         /* YOUR CODE HERE */
