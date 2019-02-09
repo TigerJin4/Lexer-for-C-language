@@ -6,7 +6,7 @@ char my_char1 = 'a';
 'c
 char my_char2 = '\t';
 char my_char2 = '\t';
-char my_char3 = ';
+char my_char3 = 'abndjsfskffsaj';
 
 ''//a'';
 'a
