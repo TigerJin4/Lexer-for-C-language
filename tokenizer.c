@@ -172,6 +172,7 @@ size_t SelectToken(char* buffer,
     }
     //size_read += 1;
     if (buffer[size_read + 1] == '/') {
+      printf("%s\n", "hi");
       IS_COMMENT = 1;
       (*linenum)++;
       size_read+=2;
