@@ -488,6 +488,7 @@ size_t SelectToken(char* buffer,
   } else {  // Identifiers, keywords, and errors
     size_t id_len = 1;
     int search = 1;
+    printf("%s\n", "hi");
     while (size_read + id_len < size && search) {
       if (is_identifier_component(buffer[size_read + id_len])) {
         id_len++;
