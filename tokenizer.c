@@ -88,23 +88,15 @@ size_t SelectToken(char* buffer,
   char token_contents[size + 1];
   size_t size_read = 0;
 
-  // if (IS_COMMENT) {
-  //   while (size_read < size) {
-  //       if (buffer[size_read] == '\n') {
-  //         IS_COMMENT = 0;
-  //         size_read++;
-  //         (*linenum)++;
-  //         break;
-  //       }
-  //       size_read++;
-  //   }
-  // }
-  while (IS_COMMENT && size_read < size) {
-    if (buffer[size_read] == '\n') {
-      IS_COMMENT = 0;
-      return size_read;
-    } else {
-      size_read++;
+  if (IS_COMMENT) {
+    while (size_read < size) {
+        if (buffer[size_read] == '\n') {
+          IS_COMMENT = 0;
+          size_read++;
+          (*linenum)++;
+          break;
+        }
+        size_read++;
     }
   }
 
@@ -173,22 +165,8 @@ size_t SelectToken(char* buffer,
     //size_read += 1;
     if (buffer[size_read + 1] == '/') {
       IS_COMMENT = 1;
-      (*linenum)++;
-      size_read+=2;
-      if (size_read == size) {
-        return size_read;
-      }
-      while (IS_COMMENT && size_read < size) {
-        if (buffer[size_read] == '\n') {
-          IS_COMMENT = 0;
-        } else {
-          size_read++;
-        }
-      }
-
-      // IS_COMMENT = 1;
-      // //size_read++;
-      // return size_read + 1;
+      //size_read++;
+      return size_read + 1;
       /* YOUR CODE HERE*/
     } else {
       size_read++;
@@ -472,6 +450,8 @@ size_t SelectToken(char* buffer,
                  buffer[size_read])) {  // positive integers and some errors
     size_t int_len = 1;
     int search = 1;
+    printf("%d\n", buffer[size_read - 1]);
+    printf("%d\n", buffer[size_read]);
     while (size_read + int_len < size && search) {
       if (is_digit(buffer[size_read + int_len])) {
         int_len++;
@@ -488,6 +468,7 @@ size_t SelectToken(char* buffer,
         } else {
               char* endpointer;
               int i = strtol(buffer, &endpointer, 10);
+              printf("%d\n", i);
               size_read += int_len;
               t = create_token(filename);
               t->linenum = *linenum;
