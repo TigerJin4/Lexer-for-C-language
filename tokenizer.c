@@ -399,13 +399,13 @@ size_t SelectToken(char* buffer,
                 t->data.character = replace_escape_in_character(buffer + size_read + 1);
                 size_read += 4;
             } else {
-              int total =
-                  generate_character_error(&t, buffer, size_read, size, *linenum, filename);
-              if (total == 0) {
-                  return size_read;
-              } else {
-                  size_read += total;
-              }
+                int total =
+                    generate_character_error(&t, buffer, size_read, size, *linenum, filename);
+                if (total == 0) {
+                    return size_read;
+                } else {
+                    size_read += total;
+                }
             }
      } else {
           int total =

@@ -109,13 +109,13 @@ void testISID_ALPHA(void) {
 }
 
 void testISID_DIGIT(void) {
-  CU_ASSERT_TRUE(is_valid_identifier("124"));
-  CU_ASSERT_TRUE(is_valid_identifier("042"));
+  CU_ASSERT_FALSE(is_valid_identifier("124"));
+  CU_ASSERT_FALSE(is_valid_identifier("042"));
 }
 void testISID_COMBINATION(void) {
-  CU_ASSERT_TRUE(is_valid_identifier("1_2r"));
-  CU_ASSERT_TRUE(is_valid_identifier("4e__2r"));
-  CU_ASSERT_TRUE(is_valid_identifier("_4466gr"));
+  CU_ASSERT_FALSE(is_valid_identifier("1_2r"));
+  CU_ASSERT_FALSE(is_valid_identifier("4e__2r"));
+  CU_ASSERT_FALSE(is_valid_identifier("_4466gr"));
 }
 
 /* STRCONCAT tests */

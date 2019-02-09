@@ -126,8 +126,11 @@ int is_identifier_component(char c) {
    a valid identifier, the function returns 0.
 */
 int is_valid_identifier(char* str) {
+  if (!is_alpha(str[0])) {
+    return 0;
+  }
   int c = strlen(str);
-  for (int i=0; i < c; i++) {
+  for (int i = 1; i < c; i++) {
     if (!is_identifier_component(str[i])) {
       return 0;
     }
