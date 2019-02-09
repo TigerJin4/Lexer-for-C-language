@@ -2,4 +2,5 @@ int my_age = 06;
 //this is a comment
 //this is another comment
 char my_char1 = 'a';
+'c
 char my_char2 = '\t';
