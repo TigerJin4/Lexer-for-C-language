@@ -466,7 +466,7 @@ size_t SelectToken(char* buffer,
         } else {
               char* endpointer;
               int i = strtol(buffer, &endpointer, 10);
-        // printf("%d\n", i);
+              printf("%d\n", i);
               size_read += int_len;
               t = create_token(filename);
               t->linenum = *linenum;
