@@ -379,7 +379,7 @@ size_t SelectToken(char* buffer,
   } else if (buffer[size_read] == '\'') {  // characters and some errors
     /* FIXME IM NOT CORRECT. */
         if (size_read + 1 == size) {
-          return size_read
+          return size_read;
         }
         char* segment  = &(buffer[size_read + 1]);
         if (size_read + 2 == size) {
