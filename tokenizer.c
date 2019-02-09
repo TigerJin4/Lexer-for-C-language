@@ -398,7 +398,9 @@ size_t SelectToken(char* buffer,
                 t->type = TOKEN_CHARACTER;
                 t->data.character = replace_escape_in_character(buffer + size_read + 1);
                 size_read += 4;
-      }
+            } else {
+              return size_read;
+            }
      } else {
           int total =
               generate_character_error(&t, buffer, size_read, size, *linenum, filename);
