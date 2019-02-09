@@ -378,7 +378,7 @@ size_t SelectToken(char* buffer,
     }
   } else if (buffer[size_read] == '\'') {  // characters and some errors
     /* FIXME IM NOT CORRECT. */
-    if (size_read + 2 > size){
+    if (size_read + 2 <= size){
       return size_read;
     } if (buffer[size_read + 2] == '\'') {
  	        size_read++;
@@ -407,7 +407,7 @@ size_t SelectToken(char* buffer,
                     size_read += total;
                 }
             }
-   //  if (size_read + 1 == size || size_read + 2 == size) {
+   //  if (size_read + 2 <= size) {
  	 //    return size_read;
  	 // }
  	 // char *ptr = &(buffer[size_read+1]);
