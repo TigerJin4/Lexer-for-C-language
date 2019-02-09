@@ -1,0 +1,11 @@
+int x = 9;   //comments
+
+char a = '\n'; //comment
+
+"This is apparently a string" //last comments
+
+"sadwasdfadfa \"
+
+char a = 'a;
+
+char b = '\n;
